@@ -8,7 +8,7 @@ node[:deploy].each do |application, deploy|
 
       interpreter "bash"
       user "ubuntu"
-      cwd "#{deploy[:deploy_to]}"
+      cwd "#{deploy[:deploy_to]}/current"
       code <<-EOH
       php artisan migrate
       EOH
