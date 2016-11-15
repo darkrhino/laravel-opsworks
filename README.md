@@ -7,7 +7,7 @@ You'll need to create an OpsWorks stack that uses Ubuntu 14.04 LTS, as the recip
 
 ## Stack configuration
 
-When creating a stack, indicate that you want to use custom Chef cookbooks, with a repository type of Git and a repository URL of `https://github.com/dwightwatson/laravel-opsworks` (or your own repository URL if you decide to fork this one). You will not need an SSH key if the repository is public (like this one). The other settings for the stack you may set as you please.
+When creating a stack, indicate that you want to use custom Chef cookbooks, with a repository type of Git and a repository URL of `https://github.com/portaremedia/laravel-opsworks` (or your own repository URL if you decide to fork this one). You will not need an SSH key if the repository is public (like this one). The other settings for the stack you may set as you please.
 
 ## PHP App Server layer configuration
 
@@ -27,12 +27,15 @@ This recipe will populate your `.env` file with the database configuration of yo
 * `laravel::symlink_storage`
 This will move the `storage` directory into a shared directory so that it can be used by each release of your app. For example, if you're storing cache/sessions or other application data in the storage folder it can be used by the next release after a deployment (so it won't force your users to re-authenticate or the app to re-build the cache).
 
+* `laravel::storage_permissions`
+This will make sure that the storage permissions are set properly on storage/app storage/framework storage/logs bootstrap/cache.
+
 * `composer::install`
 This will install Composer and then the dependencies of your application for the given release, without the development dependencies.
 
 ## App configuration
 
-Select the correct data source type for your application (whether it be RDS or OpsWorks) as the credentials for that database will be passed into your application's environment. You can also add additional application environment variables, for example your `APP_KEY`.
+Set all of the environment variables for Laravel such as APP_KEY, DB_USERNAME, DB_PASSWORD, etc.
 
 ```bash
 opsworks-agent-cli get_json
