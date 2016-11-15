@@ -30,6 +30,9 @@ This will move the `storage` directory into a shared directory so that it can be
 * `laravel::storage_permissions`
 This will make sure that the storage permissions are set properly on storage/app storage/framework storage/logs bootstrap/cache.
 
+* `laravel::migrations`
+Allows the first instance of your stack to run a migration.
+
 * `composer::install`
 This will install Composer and then the dependencies of your application for the given release, without the development dependencies.
 
