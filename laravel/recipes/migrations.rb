@@ -1,6 +1,6 @@
 node[:deploy].each do |application, deploy|
   script "migrations" do
-    migrations_instance_hostname = node[:opsworks][:layers]['app-layer'][:instances].keys.sort.first
+    migrations_instance_hostname = node[:opsworks][:layers]['php-app'][:instances].keys.sort.first
 
     if migrations_instance_hostname == node[:opsworks][:instance][:hostname]
 
