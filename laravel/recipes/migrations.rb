@@ -10,7 +10,7 @@ node[:deploy].each do |application, deploy|
       user "ubuntu"
       cwd "#{deploy[:deploy_to]}/current"
       code <<-EOH
-      php artisan migrate
+      php artisan migrate --force
       EOH
     end
   end
